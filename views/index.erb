@@ -1,0 +1,23 @@
+<style>
+body {background-color: white;}
+h1   {color: black;}
+h1   {text-align: center;}
+h1   {font-size: 60px;}
+h2   {color: black;}
+h2   {text-align: center;}
+h2   {font-size: 30px;}
+form {text-align: center;}
+ul {list-style-type: none;
+    margin: 100;
+    padding: 0;}
+</style>
+
+<p><h1>Chitter<h1><p>
+  <form action='/post_message' method="post">
+    <label for="message">
+      <input type="text" name="message" placeholder="Send a Peep">
+    </label>
+    <input type="submit" value="Peep">
+  </form>
+
+  <h2><%=session[:message]%><h2>
