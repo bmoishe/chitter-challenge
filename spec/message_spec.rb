@@ -3,7 +3,7 @@ require 'pg'
 
   describe Message do
   it 'creates a message' do
-    message = Message.new(message: "Hi")
+    message = Message.new(message: "Hi", time: "15:17:08")
     # persisted_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
     expect(message).to be_a Message
   end

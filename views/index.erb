@@ -6,6 +6,10 @@ h1   {font-size: 60px;}
 h2   {color: black;}
 h2   {text-align: center;}
 h2   {font-size: 30px;}
+h3   {color: red;}
+h3   {text-align: center;}
+h3   {font-size: 15px;}
+
 form {text-align: center;}
 ul {list-style-type: none;
     margin: 100;
@@ -24,8 +28,9 @@ ul {list-style-type: none;
     <% @messages.each do |peep| %>
       <li>
         <h2>
-          <%= peep[:message] %>
-        </a><h2>
+
+          <%= peep[:message]%> <h2><h3>This message was peeped at <%=peep[:time]%><h3>
+        <!-- </a> -->
       </li>
     <% end %>
   </ul>

@@ -7,6 +7,7 @@ class Chitter < Sinatra::Base
   # end
 # enable :sessions
 attr_accessor :peep
+attr_accessor :time
 
   get '/' do
     if ENV['test_database']
@@ -14,16 +15,17 @@ attr_accessor :peep
     else
       con = PG.connect(dbname: 'chitter')
     end
-      results = con.exec("SELECT * FROM messages;")
-      @messages = results.map { |message|
-      { message: message['message'] }}
-    erb :index
+    results = con.exec("SELECT * FROM messages ORDER BY messages DESC;")
+    @messages = results.map { |message|
+      { message: message['message'], time: message['time']}}
 
+    erb :index
   end
 
   post '/post_message' do
     @peep = params[:s_message]
-      Message.send_message(message: @peep)
+    @time = Time.new
+      Message.send_message(message: @peep, time: @time)
     redirect '/'
   end
 
