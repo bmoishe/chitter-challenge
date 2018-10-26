@@ -14,10 +14,19 @@ ul {list-style-type: none;
 
 <p><h1>Chitter<h1><p>
   <form action='/post_message' method="post">
-    <label for="message">
-      <input type="text" name="message" placeholder="Send a Peep">
+    <label for="s_message">
+      <input type="text" name="s_message" placeholder="Send a Peep">
     </label>
     <input type="submit" value="Peep">
   </form>
 
-  <h2><%=session[:message]%><h2>
+  <ul>
+    <% @messages.each do |peep| %>
+      <li>
+        <h2>
+          <%= peep[:message] %>
+        </a><h2>
+      </li>
+    <% end %>
+  </ul>
+  <!-- <h2><%=@messages%><h2> -->
