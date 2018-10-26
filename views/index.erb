@@ -17,6 +17,16 @@ ul {list-style-type: none;
 </style>
 
 <p><h1>Chitter<h1><p>
+  <h2><%if session[:username] != nil %>
+    <%="Welcome #{session[:username]}"%>
+    <%else%> 
+    <form action='/registration' method="get">
+      <input type="submit" value="sign_up">
+    </form>
+    <%end%>
+    <h2>
+
+
   <form action='/post_message' method="post">
     <label for="s_message">
       <input type="text" name="s_message" placeholder="Send a Peep">

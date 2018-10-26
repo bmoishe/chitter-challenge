@@ -5,9 +5,10 @@ class Chitter < Sinatra::Base
   # before do
   #   @messages = Message.all
   # end
-# enable :sessions
+enable :sessions
 attr_accessor :peep
 attr_accessor :time
+attr_accessor :username
 
   get '/' do
     if ENV['test_database']
@@ -28,6 +29,16 @@ attr_accessor :time
       Message.send_message(message: @peep, time: @time)
     redirect '/'
   end
+
+  get '/registration' do
+    erb :registration
+  end
+
+  post '/store_details' do
+    session[:username] = params[:username]
+    redirect '/'
+  end
+
 
   run! if app_file == $0
 end
