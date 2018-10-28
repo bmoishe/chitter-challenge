@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/message.rb'
+require './lib/user.rb'
 
 class Chitter < Sinatra::Base
   # before do
@@ -36,6 +37,9 @@ attr_accessor :username
 
   post '/store_details' do
     session[:username] = params[:username]
+    @email = params[:email]
+    @password = params[:password]
+    User.create(username: session[:username], email: @email, password: @password)
     redirect '/'
   end
 
